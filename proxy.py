@@ -90,17 +90,14 @@ def home():
     """Fetches the specified URL and streams it out to the client.
     If the request was referred by the proxy itself (e.g. this is an image fetch for
     a previously proxied HTML page), then the original Referer is passed."""
-    # return _do_proxy(url)
-    # return render_template('/html/home.html', name=url, request=request)
-    LOG.debug('----Render index.html')
+    LOG.debug('Render index.html')
     return app.send_static_file('index.html')
 
 
 @app.route('/motion')
 def motion():
-    # TODO: spegni led e aggiungi link
     url = '%s/motion' % CAMERA
-    LOG.debug('----Render motion')
+    LOG.debug('Render motion')
     led.turn_off()
     return _do_proxy(url)
 
@@ -125,7 +122,7 @@ def get_day_folder(day):
 @app.route('/record/')
 def get_records():
     url = '%s/record/' % CAMERA
-    LOG.debug('----Record folder')
+    LOG.debug('Record folder')
     return _do_proxy(url)
 
 
