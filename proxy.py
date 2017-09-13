@@ -3,6 +3,8 @@ A simple proxy server for Xiaomi Yi camera. Usage:
 http://hostname:port
 For example:
 http://127.0.0.1:8090
+
+Thanks to @gear11
 """
 import requests
 import logging
