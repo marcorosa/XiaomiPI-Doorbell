@@ -1,28 +1,26 @@
 """
-A simple proxy server. Usage:
-http://hostname:port/p/(URL to be proxied, minus protocol)
+A simple proxy server for Xiaomi Yi camera. Usage:
+http://hostname:port
 For example:
-http://localhost:8080/p/www.google.com
+http://127.0.0.1:8090
 """
 import requests
 import logging
 import vlc
 
 from config import host, port, CHUNK_SIZE, CAMERA
-from flask import Flask, render_template, request, abort, Response, redirect,\
-    send_from_directory
+from flask import Flask, request, Response
 from led import Led
 from six import _print
 from werkzeug.serving import WSGIRequestHandler
 
 
-# app = Flask(__name__.split('.')[0])
-app = Flask(__name__)
+app = Flask(__name__.split('.')[0])
 
 host_url = 'http://%s:%s' % (host, port)
 
 logging.basicConfig(level=logging.DEBUG, format='%(levelname)s %(message)s')
-LOG = logging.getLogger(__name__)  # .addHandler(logging.NullHandler())
+LOG = logging.getLogger(__name__)
 
 led = Led()
 
@@ -87,9 +85,7 @@ def _do_proxy(url):
 
 @app.route('/')
 def home():
-    """Fetches the specified URL and streams it out to the client.
-    If the request was referred by the proxy itself (e.g. this is an image fetch for
-    a previously proxied HTML page), then the original Referer is passed."""
+    """Render index.html page"""
     LOG.debug('Render index.html')
     return app.send_static_file('index.html')
 
