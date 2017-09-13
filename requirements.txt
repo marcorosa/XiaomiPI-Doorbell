@@ -1,4 +1,5 @@
 Flask
+pyA20>=0.2.1
 python-vlc
 requests
 six
