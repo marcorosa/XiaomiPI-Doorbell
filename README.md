@@ -34,3 +34,5 @@ The proxy offers an interface on the localhost such that when the motion page is
 It is not mandatory to run this proxy for motion detection, its usefulness is to switch off the led.
 ### Assembly
 
+## Scripts
+`scripts` folder contains useful scripts for other motion detection ways
